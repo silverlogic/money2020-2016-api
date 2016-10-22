@@ -1,0 +1,52 @@
+pathlib2==2.1.0
+
+Django==1.10.2
+dj-database-url==0.4.1
+django-model-utils==2.5.2
+django-cors-headers==1.1.0
+django-avatar==3.1.0
+django-filter==0.15.3
+django-crispy-forms==1.6.0
+easy-thumbnails==2.3
+
+# sending emails
+djmail==0.13.0
+
+# Django REST Framework
+djangorestframework==3.4.7
+djangorestframework-expander==0.2.3
+git+https://github.com/silverlogic/drf-extra-fields.git@c5845d4de9873950d65bad3f487a6dc62f544e08
+git+https://github.com/silverlogic/django-rest-social-auth@master
+
+# postgresql driver
+psycopg2==2.6.1
+
+# runs the app server
+gunicorn==19.6.0
+
+# datetime helpers
+python-dateutil==2.5.3
+
+# code style
+flake8==3.0.4
+isort==4.2.5
+
+# testing
+pytest==3.0.1
+pytest-cov==2.3.1
+pytest-django==3.0.0
+
+# test factories
+factory-boy==2.7.0
+
+# prettier python prompt / manage.py shell
+ipython==5.1.0
+
+# helpers
+dj-inmemorystorage==1.4.0
+
+# fake http requests
+httpretty==0.8.14
+
+# debug helper / performance monitoring
+django-debug-toolbar==1.5

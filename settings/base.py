@@ -29,6 +29,12 @@ PASSWORD_HASHERS = [
 # Sites
 URL = env('URL')
 
+# Static/Media
+MEDIA_ROOT = str(BASE_DIR.parent / 'media')
+MEDIA_URL = '{url}/media/'.format(url=URL)
+STATIC_ROOT = str(BASE_DIR.parent / 'static')
+STATIC_URL = '{url}/static/'.format(url=URL)
+
 # Mail
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

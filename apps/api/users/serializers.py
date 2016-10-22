@@ -1,6 +1,6 @@
 from avatar.models import Avatar
+from rest_framework.serializers import ModelSerializer
 
-from apps.api.serializers import ModelSerializer
 from apps.users.models import User
 
 from .fields import AvatarField

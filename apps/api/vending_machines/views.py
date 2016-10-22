@@ -20,8 +20,8 @@ class VendingMachinesViewSet(mixins.ListModelMixin,
         Config.setSandbox(True)   # For production: use Config.setSandbox(false)
 
         mapObj = RequestMap()
-        mapObj.set("latitude", "36.121399")
-        mapObj.set("longitude", "-115.169696")
+        mapObj.set("latitude", request.data.get('lat', "36.121399"))
+        mapObj.set("longitude", request.data.get('long', "-115.169696"))
 
         responseList = Machine.listByCriteria(mapObj)
 

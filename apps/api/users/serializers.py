@@ -27,12 +27,12 @@ class UserSerializer(UserBaseSerializer):
                 Avatar.objects.create(user=instance, primary=True, avatar=avatar)
             else:
                 instance.avatar_set.all().delete()
-        return super().update(instance, validated_data)
+        return super(self, UserSerializer).update(instance, validated_data)
 
     def to_representation(self, user):
         request = self.context['request']
         if request.user.is_authenticated() and request.user.pk == user.pk:
-            return super().to_representation(user)
+            return super(self, UserSerializer).to_representation(user)
         else:
             return UserPublicSerializer(user).data
 

@@ -9,7 +9,6 @@ import dj_database_url
 
 from .env import env
 
-
 BASE_DIR = pathlib.Path(__file__).parent.parent
 APPS_DIR = BASE_DIR / 'apps'
 
@@ -199,7 +198,6 @@ SOCIAL_AUTH_PIPELINE = [
     'social.pipeline.user.user_details',
 
     'apps.users.pipeline.set_avatar',
-    'apps.referrals.pipeline.link_user_to_referrer',
 ]
 SOCIAL_AUTH_USER_FIELDS = ['username', 'first_name', 'last_name']
 

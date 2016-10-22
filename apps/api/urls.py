@@ -13,10 +13,15 @@ from .social_auth.views import SocialAuthViewSet  # noqa
 
 router.register(r'social-auth', SocialAuthViewSet, base_name='social-auth')
 
-# # Users
+# Users
 from .users.views import UsersViewSet  # noqa
 
 router.register(r'users', UsersViewSet, base_name='users')
+
+# Vending Machines
+from .vending_machines.views import VendingMachinesViewSet  # noqa
+
+router.register(r'vending-machines', VendingMachinesViewSet, base_name='vending-machines')
 
 urlpatterns = [
     url(r'v1/', include(router.urls, namespace='v1')),

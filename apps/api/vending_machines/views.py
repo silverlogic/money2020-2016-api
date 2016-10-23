@@ -3,6 +3,10 @@ from mastercardvending import Machine
 from rest_framework import mixins, viewsets
 from rest_framework.response import Response
 
+from apps.vending_machines.models import Product
+
+from .serializers import ProductSerializer
+
 
 class VendingMachinesViewSet(mixins.ListModelMixin,
                              viewsets.GenericViewSet):
@@ -26,4 +30,5 @@ class VendingMachinesViewSet(mixins.ListModelMixin,
             'model': response.get('model'),
             'serial': response.get('serial'),
             'serviceId': response.get('serviceId'),
+            'products': [ProductSerializer(instance=i).data for i in Product.objects.filter(machine__serial=response.get('serial'))],
         } for response in responseList.get('list')])

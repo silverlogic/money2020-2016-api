@@ -26,8 +26,8 @@ router.register(r'vending-machines', VendingMachinesViewSet, base_name='vending-
 # Approvals
 from .approvals.views import ApprovalCreateViewSet, ApprovalUpdateViewSet  # noqa
 
-router.register(r'approval-create', ApprovalCreateViewSet)
-router.register(r'approval-update', ApprovalUpdateViewSet)
+router.register(r'approval-create', ApprovalCreateViewSet, base_name='approval-create')
+router.register(r'approval-update', ApprovalUpdateViewSet, base_name='approval-update')
 
 urlpatterns = [
     url(r'v1/', include(router.urls, namespace='v1')),

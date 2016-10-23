@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'apps.api',
     'apps.base',
     'apps.users',
+    'apps.vending_machines',
 ]
 
 MIDDLEWARE_CLASSES = [

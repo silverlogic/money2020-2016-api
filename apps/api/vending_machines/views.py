@@ -18,9 +18,13 @@ class VendingMachinesViewSet(mixins.ListModelMixin,
         mapObj.set("latitude", request.data.get('lat', "36.121399"))
         mapObj.set("longitude", request.data.get('long', "-115.169696"))
 
+        product_filter = {}
+        if request.query_params.get('q'):
+            product_filter = {'name__icontains': request.query_params.get('q')}
+
         responseList = Machine.listByCriteria(mapObj)
 
-        return Response([{
+        vending_machines = [{
             'name': response.get('name'),
             'description': response.get('description'),
             'address': response.get('address'),
@@ -30,5 +34,10 @@ class VendingMachinesViewSet(mixins.ListModelMixin,
             'model': response.get('model'),
             'serial': response.get('serial'),
             'serviceId': response.get('serviceId'),
-            'products': [ProductSerializer(instance=i).data for i in Product.objects.filter(machine__serial=response.get('serial'))],
-        } for response in responseList.get('list')])
+            'products': [ProductSerializer(instance=i).data for i in Product.objects.filter(machine__serial=response.get('serial'), **product_filter)],
+        } for response in responseList.get('list')]
+
+        if product_filter:
+            vending_machines = [vending_machine for vending_machine in vending_machines if vending_machine['products']]
+
+        return Response(vending_machines)

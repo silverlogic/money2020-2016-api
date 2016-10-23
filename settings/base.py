@@ -6,6 +6,7 @@ import pathlib
 from django.utils.translation import ugettext_lazy as _
 
 import dj_database_url
+from mastercardapicore import Config, OAuthAuthentication
 
 from .env import env
 
@@ -210,3 +211,14 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id,email,first_name,last_name'
 }
 AUTHENTICATION_BACKENDS.append('social.backends.facebook.FacebookOAuth2')
+
+
+# Mastercard API
+consumerKey = "IVzQ9DSGMDoFaTZTFESpCh3lijeE5xI68L1d0sA_bffd6b00!02324594db1a40fab12eada7da2fef0d0000000000000000"
+keyStorePath = "./test_sandbox.p12"
+keyAlias = "keyalias"
+keyPassword = "keystorepassword"
+
+auth = OAuthAuthentication(consumerKey, keyStorePath, keyAlias, keyPassword)
+Config.setAuthentication(auth)
+Config.setSandbox(True)   # For production: use Config.setSandbox(false)

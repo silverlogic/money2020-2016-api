@@ -23,6 +23,12 @@ from .vending_machines.views import VendingMachinesViewSet  # noqa
 
 router.register(r'vending-machines', VendingMachinesViewSet, base_name='vending-machines')
 
+# Approvals
+from .approvals.views import ApprovalCreateViewSet, ApprovalUpdateViewSet  # noqa
+
+router.register(r'approval-create', ApprovalCreateViewSet)
+router.register(r'approval-update', ApprovalUpdateViewSet)
+
 urlpatterns = [
     url(r'v1/', include(router.urls, namespace='v1')),
 ]

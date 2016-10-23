@@ -1,4 +1,4 @@
-from mastercardapicore import Config, OAuthAuthentication, RequestMap
+from mastercardapicore import RequestMap
 from mastercardvending import Machine
 from rest_framework import mixins, viewsets
 from rest_framework.response import Response
@@ -10,15 +10,6 @@ class VendingMachinesViewSet(mixins.ListModelMixin,
         return None
 
     def list(self, request, *args, **kwargs):
-        consumerKey = "IVzQ9DSGMDoFaTZTFESpCh3lijeE5xI68L1d0sA_bffd6b00!02324594db1a40fab12eada7da2fef0d0000000000000000"
-        keyStorePath = "./test_sandbox.p12"
-        keyAlias = "keyalias"
-        keyPassword = "keystorepassword"
-
-        auth = OAuthAuthentication(consumerKey, keyStorePath, keyAlias, keyPassword)
-        Config.setAuthentication(auth)
-        Config.setSandbox(True)   # For production: use Config.setSandbox(false)
-
         mapObj = RequestMap()
         mapObj.set("latitude", request.data.get('lat', "36.121399"))
         mapObj.set("longitude", request.data.get('long', "-115.169696"))

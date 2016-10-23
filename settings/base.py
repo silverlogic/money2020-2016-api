@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     # Project
     'apps.api',
     'apps.base',
+    'apps.payments',
     'apps.users',
     'apps.vending_machines',
 ]

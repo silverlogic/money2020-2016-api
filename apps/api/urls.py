@@ -29,6 +29,12 @@ from .approvals.views import ApprovalCreateViewSet, ApprovalUpdateViewSet  # noq
 router.register(r'approval-create', ApprovalCreateViewSet, base_name='approval-create')
 router.register(r'approval-update', ApprovalUpdateViewSet, base_name='approval-update')
 
+# Payments
+from .payments.views import PaymentMethodsViewSet  # noqa
+
+router.register(r'payment-methods', PaymentMethodsViewSet, base_name='payment-methods')
+
+
 urlpatterns = [
     url(r'v1/', include(router.urls, namespace='v1')),
 ]
